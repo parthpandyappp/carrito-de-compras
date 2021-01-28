@@ -43,13 +43,29 @@ class App extends Component {
       ],
     })
   };
+
+  currentDate() {
+    return new Date().getFullYear();
+  }
+
   render() {
+    const someStyle = {
+      marginTop: "180px", marginLeft: "100px", marginRight: "100px",
+    }
+
     return (
-      <React.Fragment className="text-center">
+      <React.Fragment className="text-center" >
         <NavBar totalCounts={this.state.counters.filter(c => c.value > 0).length} />
         <main className="Container">
           <Counters counters={this.state.counters} onReset={this.handleReset} onIncrement={this.handleIncrement} onDelete={this.handleDelete} />
         </main>
+        <footer>
+          <hr style={someStyle} />
+
+          <p className="text-center" style={{ fontFamily: "Roboto Mono", lineHeight: 0.5, marginTop: "30px" }}>Copyright ©️ {this.currentDate()} Parth Pandya </p>
+
+          <p className="text-center" style={{ fontFamily: "Roboto Mono", fontSize: 10, lineHeight: 0.5 }}>Some rights reserved.</p>
+        </footer>
       </React.Fragment>
 
     );
