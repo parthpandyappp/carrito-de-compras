@@ -21,6 +21,12 @@ class App extends Component {
     this.setState({ counters })
   }
 
+  handleDelete = (counterId) => {
+    // console.log("Event handler called!", counterId);
+    const counter = this.state.counters.filter((c) => c.id !== counterId);
+    this.setState({ counters: counter });
+  };
+
   handleReset = () => {
     // const counter = this.state.counters.map((c) => {
     //   c.value = 0;
@@ -37,19 +43,10 @@ class App extends Component {
       ],
     })
   };
-
-  handleReset = () => {
-    const counter = this.state.counters.map((c) => {
-      c.value = 0;
-      return c;
-    });
-
-    this.setState({ counter })
-  };
   render() {
     return (
       <React.Fragment className="text-center">
-        <NavBar totalCounts={this.state.counters.filter(c => c.value>0).length}/>
+        <NavBar totalCounts={this.state.counters.filter(c => c.value > 0).length} />
         <main className="Container">
           <Counters counters={this.state.counters} onReset={this.handleReset} onIncrement={this.handleIncrement} onDelete={this.handleDelete} />
         </main>
