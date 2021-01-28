@@ -21,10 +21,21 @@ class App extends Component {
     this.setState({ counters })
   }
 
-  handleDelete = (counterId) => {
-    // console.log("Event handler called!", counterId);
-    const counter = this.state.counters.filter((c) => c.id !== counterId);
-    this.setState({ counters: counter });
+  handleReset = () => {
+    // const counter = this.state.counters.map((c) => {
+    //   c.value = 0;
+    //   return c;
+    // });
+
+    // this.setState({ counter })
+    this.setState({
+      counters: [
+        { id: 1, value: 0 },
+        { id: 2, value: 0 },
+        { id: 3, value: 0 },
+        { id: 4, value: 0 },
+      ],
+    })
   };
 
   handleReset = () => {
